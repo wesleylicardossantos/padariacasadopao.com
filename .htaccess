@@ -1,3 +1,15 @@
+# Bloquear arquivos sensíveis
+<FilesMatch "^\.env|\.git|composer\.(json|lock)|package(-lock)?\.json|artisan|phpunit\.xml|.*\.sql|.*\.zip|.*\.bak|.*\.log$">
+    Require all denied
+</FilesMatch>
+
+RedirectMatch 404 /\.git
+RedirectMatch 404 /\.env
+RedirectMatch 404 /.*\.sql$
+RedirectMatch 404 /.*\.bak$
+RedirectMatch 404 /.*\.zip$
+RedirectMatch 404 /.*\.log$
+
 RewriteEngine On
 
 # HTTPS canônico sem loop
