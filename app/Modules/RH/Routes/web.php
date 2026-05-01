@@ -1,5 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Modules\RH\Controllers\FuncionarioController;
+
+Route::prefix('rh')->group(function () {
+
+    Route::get('/funcionarios', [FuncionarioController::class, 'index']);
+
+});
+
 use App\Modules\RH\Controllers\AlertaController;
 use App\Modules\RH\Controllers\AlertasInteligentesController;
 use App\Modules\RH\Controllers\CustoFuncionarioController;
