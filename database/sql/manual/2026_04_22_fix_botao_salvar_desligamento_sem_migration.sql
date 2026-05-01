@@ -1,0 +1,4 @@
+-- FIX RH DESLIGAMENTO / RESCISAO
+-- Nesta correção não é obrigatório rodar migration.
+-- O código foi compatibilizado para funcionar tanto com schema antigo quanto com schema novo da tabela rh_rescisoes.
+-- Nenhum SQL obrigatório precisa ser executado para remover o erro 500 do botão salvar desligamento.

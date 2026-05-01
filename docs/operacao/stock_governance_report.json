@@ -1,0 +1,61 @@
+{
+    "generated_at": "2026-04-23 11:32:57",
+    "hotspots": [
+        {
+            "file": "app\/Console\/Commands\/RefactorPhase3AuditCommand.php",
+            "pattern": "Estoque::create("
+        },
+        {
+            "file": "app\/Console\/Commands\/RefactorPhase3AuditCommand.php",
+            "pattern": "Estoque::query()->updateOrCreate("
+        },
+        {
+            "file": "app\/Helpers\/ProdutoGrade.php",
+            "pattern": "Estoque::create("
+        },
+        {
+            "file": "app\/Http\/Controllers\/API\/ProdutoController.php",
+            "pattern": "Estoque::create("
+        },
+        {
+            "file": "app\/Http\/Controllers\/API\/ProdutoController.php",
+            "pattern": "->quantidade ="
+        },
+        {
+            "file": "app\/Http\/Controllers\/EcommerceController.php",
+            "pattern": "->quantidade ="
+        },
+        {
+            "file": "app\/Http\/Controllers\/StockController.php",
+            "pattern": "Estoque::create("
+        },
+        {
+            "file": "app\/Modules\/Estoque\/Services\/StockGovernanceReportService.php",
+            "pattern": "Estoque::create("
+        },
+        {
+            "file": "app\/Modules\/Estoque\/Services\/StockGovernanceReportService.php",
+            "pattern": "Estoque::query()->updateOrCreate("
+        },
+        {
+            "file": "app\/Modules\/Estoque\/Services\/StockGovernanceReportService.php",
+            "pattern": "DB::table('estoques')->insert("
+        },
+        {
+            "file": "app\/Modules\/Estoque\/Services\/StockGovernanceReportService.php",
+            "pattern": "DB::table('estoques')->update("
+        },
+        {
+            "file": "app\/Modules\/Estoque\/Services\/StockGovernanceReportService.php",
+            "pattern": "->quantidade ="
+        },
+        {
+            "file": "app\/Modules\/Estoque\/Services\/StockLedgerService.php",
+            "pattern": "Estoque::query()->updateOrCreate("
+        }
+    ],
+    "recent_violation_count": 0,
+    "recent_violations": [],
+    "blocking_enabled": true,
+    "monitoring_enabled": true
+}

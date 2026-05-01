@@ -1,0 +1,15 @@
+Entrega FULL PRODUCAO - template juridico premium
+
+Arquivos alterados:
+- app/Http/Controllers/RHDocumentoGeradoController.php
+- resources/views/rh/documentos/contrato.blade.php
+
+Resumo:
+- Upgrade do template de contrato para layout juridico premium corporativo.
+- Inclusao de cabecalho institucional, numero do documento e hash visual de validacao.
+- Melhor hierarquia tipografica, secoes juridicas, quadro-resumo funcional e assinaturas.
+- Mantido formato compativel com renderizacao HTML/PDF do projeto.
+
+Observacao:
+- O ZIP FULL inclui vendor porque o projeto precisa ficar mais proximo de pronto para subida.
+- A base enviada nao continha node_modules. Por isso o pacote FULL contem tudo o que existe no projeto fonte, inclusive vendor, mas sem node_modules ausente na origem.

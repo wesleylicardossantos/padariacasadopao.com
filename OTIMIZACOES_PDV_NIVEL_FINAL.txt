@@ -1,0 +1,1 @@
+Versão final PDV com otimizações estruturais aplicadas.

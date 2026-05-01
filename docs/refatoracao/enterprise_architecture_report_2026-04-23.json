@@ -1,0 +1,13 @@
+{
+    "generated_at": "2026-04-23T14:58:54-03:00",
+    "rh_controllers_total": 45,
+    "rh_form_requests_total": 6,
+    "rh_actions_total": 9,
+    "rh_dtos_total": 9,
+    "rh_queries_total": 6,
+    "rh_controllers_using_form_requests": 2,
+    "rh_controllers_using_actions": 2,
+    "enterprise_layer_present": true,
+    "monolith_mode": "modular_monolith",
+    "compatibility_strategy": "controllers_orchestrate_actions_without_breaking_legacy_routes"
+}

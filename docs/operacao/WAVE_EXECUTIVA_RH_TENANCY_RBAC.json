@@ -1,0 +1,87 @@
+{
+    "generated_at": "2026-04-10 20:08:26",
+    "module": "RH",
+    "rh_route_count": 98,
+    "tenant_context_alias_registered": true,
+    "rh_permission_alias_registered": true,
+    "checked_routes": [
+        {
+            "route": "rh.dashboard_executivo.index",
+            "exists": true,
+            "tenant_context": true,
+            "rh_permission": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "rh.permission:rh.dashboard.executivo"
+            ]
+        },
+        {
+            "route": "rh.painel_dono.index",
+            "exists": true,
+            "tenant_context": true,
+            "rh_permission": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "rh.permission:rh.dashboard.executivo"
+            ]
+        },
+        {
+            "route": "rh.dossie.show",
+            "exists": true,
+            "tenant_context": true,
+            "rh_permission": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "rh.permission:rh.dossie.visualizar"
+            ]
+        },
+        {
+            "route": "rh.dossie.documentos.store",
+            "exists": true,
+            "tenant_context": true,
+            "rh_permission": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "rh.permission:rh.dossie.documentos.gerenciar"
+            ]
+        },
+        {
+            "route": "rh.dossie.documentos.destroy",
+            "exists": true,
+            "tenant_context": true,
+            "rh_permission": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "rh.permission:rh.dossie.documentos.excluir",
+                "rh.permission:rh.dossie.documentos.gerenciar"
+            ]
+        },
+        {
+            "route": "rh.dossie.eventos.store",
+            "exists": true,
+            "tenant_context": true,
+            "rh_permission": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "rh.permission:rh.dossie.eventos.gerenciar"
+            ]
+        },
+        {
+            "route": "rh.dossie.eventos.destroy",
+            "exists": true,
+            "tenant_context": true,
+            "rh_permission": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "rh.permission:rh.dossie.eventos.gerenciar"
+            ]
+        }
+    ]
+}

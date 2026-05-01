@@ -1,0 +1,11 @@
+- rh.portal_funcionario.index | existe=sim tenant=sim
+- rh.portal_funcionario.pdf | existe=sim tenant=sim
+- rh.portal_externo.enviar_acesso | existe=sim tenant=sim
+- rh.portal_externo.configurar | existe=sim tenant=sim
+- rh.portal_perfis.index | existe=sim tenant=sim
+- rh.portal_perfis.store | existe=sim tenant=sim
+- rh.portal_perfis.update | existe=sim tenant=sim
+- rh.portal_perfis.destroy | existe=sim tenant=sim
+- RHPortalAcessoController | trait=sim
+- RHPortalFuncionarioController | trait=sim
+- RHPortalPerfilController | trait=sim

@@ -1,0 +1,47 @@
+{
+    "generated_at": "2026-04-23T11:33:02-03:00",
+    "flags": {
+        "stock_monitor_direct_legacy_writes": true,
+        "stock_block_direct_legacy_writes": true,
+        "legacy_cutoff_allow_force_enable": false
+    },
+    "stock_write_block": {
+        "ready": true,
+        "violation_count": 0,
+        "recent_violations": [],
+        "recommended_action": "Pode avançar para ativação controlada do bloqueio de escrita direta no legado."
+    },
+    "reports": {
+        "ready": true,
+        "items": [
+            {
+                "path": "docs/operacao/governance_report.json",
+                "exists": true
+            },
+            {
+                "path": "docs/operacao/schema_drift_report.json",
+                "exists": true
+            },
+            {
+                "path": "docs/operacao/system_healthcheck.json",
+                "exists": true
+            },
+            {
+                "path": "docs/operacao/stock_governance_report.json",
+                "exists": true
+            },
+            {
+                "path": "docs/operacao/hardening_final_report.json",
+                "exists": true
+            }
+        ]
+    },
+    "public_surface": {
+        "ready": true,
+        "findings": []
+    },
+    "overall": {
+        "ready_for_safe_cutoff": true,
+        "next_step": "Ativar o bloqueio primeiro em homologação e depois em produção com janela monitorada."
+    }
+}

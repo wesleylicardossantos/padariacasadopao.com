@@ -1,0 +1,1 @@
+Reverte a aplicação global do ResolveTenantContext nos grupos web/api e corrige FuncionarioController para resolver empresa_id de request, sessão ou usuário autenticado, evitando menu lateral vazio e lista RH em branco.

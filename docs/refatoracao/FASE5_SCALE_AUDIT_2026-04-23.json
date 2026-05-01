@@ -1,0 +1,11 @@
+{
+    "enterprise.saas.scale": true,
+    "enterprise.saas.observability": true,
+    "api.internal.saas.executive": true,
+    "api.internal.saas.premium": true,
+    "api.internal.saas.scale": true,
+    "jobs_table": false,
+    "cache_table": false,
+    "failed_jobs_table": false,
+    "database_error": "could not find driver (Connection: mysql, SQL: select * from information_schema.tables where table_schema = wesl4494_db_saas and table_name = jobs and table_type = 'BASE TABLE')"
+}

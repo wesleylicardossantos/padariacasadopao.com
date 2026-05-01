@@ -1,0 +1,1 @@
+# Release Notes\n\n- removida a duplicação da lista de eventos da tela RH/Eventos\n- migração de saneamento para consolidar eventos duplicados por empresa\n- reuso do evento canônico em vínculos de funcionários e apuração\n- blindagem adicional no serviço de eventos padrão para não recriar duplicidades\n

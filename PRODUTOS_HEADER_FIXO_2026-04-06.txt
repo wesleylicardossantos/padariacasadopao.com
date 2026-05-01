@@ -1,0 +1,4 @@
+Ajuste aplicado na listagem de produtos:
+- Títulos das colunas fixos durante a rolagem vertical
+- Classe adicionada: produtos-table-wrapper
+- CSS sticky aplicado ao thead th em resources/views/produtos/index.blade.php

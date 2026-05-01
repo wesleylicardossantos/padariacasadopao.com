@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS rh_movimentacoes (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    empresa_id BIGINT UNSIGNED NOT NULL,
+    funcionario_id BIGINT UNSIGNED NOT NULL,
+    tipo VARCHAR(30) NOT NULL,
+    descricao VARCHAR(255) NOT NULL,
+    cargo_anterior VARCHAR(100) NULL,
+    cargo_novo VARCHAR(100) NULL,
+    valor_anterior DECIMAL(15,2) NULL,
+    valor_novo DECIMAL(15,2) NULL,
+    data_movimentacao DATE NOT NULL,
+    status_gerado VARCHAR(30) NULL,
+    usuario_id BIGINT UNSIGNED NULL,
+    created_at TIMESTAMP NULL DEFAULT NULL,
+    updated_at TIMESTAMP NULL DEFAULT NULL,
+    PRIMARY KEY (id),
+    KEY idx_rh_mov_emp (empresa_id),
+    KEY idx_rh_mov_func (funcionario_id),
+    KEY idx_rh_mov_tipo (tipo),
+    KEY idx_rh_mov_data (data_movimentacao)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

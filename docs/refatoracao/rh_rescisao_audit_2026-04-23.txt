@@ -1,0 +1,23 @@
+
+   Illuminate\Database\QueryException 
+
+  could not find driver (Connection: mysql, SQL: select * from information_schema.tables where table_schema = wesl4494_db_saas and table_name = rh_rescisoes and table_type = 'BASE TABLE')
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:801
+    797▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    798▕                 );
+    799▕             }
+    800▕ 
+  ➜ 801▕             throw new QueryException(
+    802▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    803▕             );
+    804▕         }
+    805▕     }
+
+      [2m+15 vendor frames [22m
+  16  app/Console/Commands/RHRescisaoAutomationAuditCommand.php:16
+      Illuminate\Support\Facades\Facade::__callStatic()
+
+      [2m+12 vendor frames [22m
+  29  artisan:38
+      Illuminate\Foundation\Console\Kernel::handle()

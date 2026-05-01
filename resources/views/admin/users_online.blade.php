@@ -1,0 +1,4 @@
+@extends('default.layout', ['title' => 'Usuários'])
+@section('content')
+<div class="page-content"><div class="card"><div class="card-body"><div class="d-flex justify-content-between align-items-center mb-3"><h4 class="mb-0">Usuários</h4><div><a href="/__admin/monitor" class="btn btn-dark">Monitor</a></div></div>@if(count($items) > 0)<table class="table table-bordered table-sm"><thead><tr><th>ID</th><th>Nome</th><th>Email</th></tr></thead><tbody>@foreach($items as $item)<tr><td>{{ $item->id ?? '-' }}</td><td>{{ $item->name ?? ($item->nome ?? '-') }}</td><td>{{ $item->email ?? '-' }}</td></tr>@endforeach</tbody></table>@else<div class="alert alert-light mb-0">Nenhum usuário encontrado.</div>@endif</div></div></div>
+@endsection

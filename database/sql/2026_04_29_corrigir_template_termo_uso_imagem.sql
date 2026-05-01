@@ -1,0 +1,54 @@
+-- Correção do template: TERMO DE AUTORIZAÇÃO DE USO DE IMAGEM
+-- Ajustes: mês em português, data alinhada à direita, sem vírgula após UF,
+-- recuo/tab nos parágrafos, CPF do funcionário mais próximo do nome,
+-- sem linha de assinatura do funcionário e linhas mantidas para testemunhas.
+
+UPDATE rh_documento_templates
+SET conteudo_html = '<style>
+    .doc-termo-imagem{font-family:DejaVu Sans, Arial, sans-serif;color:#111;line-height:1.55;font-size:12px;text-align:justify}
+    .doc-termo-imagem h1{font-size:15px;text-align:center;margin:0 0 18px 0;text-transform:uppercase;letter-spacing:.2px}
+    .doc-termo-imagem p{margin:0 0 12px 0;text-align:justify;text-indent:28px}
+    .doc-termo-imagem .linha-local{margin-top:28px;margin-bottom:34px;text-align:right;text-indent:0}
+    .doc-termo-imagem .assinatura{margin-top:18px;text-align:center;line-height:1.25}
+    .doc-termo-imagem .assinatura strong{display:block;margin-bottom:8px}
+    .doc-termo-imagem .assinatura-nome{display:block;margin-bottom:3px;text-transform:uppercase}
+    .doc-termo-imagem .assinatura-cpf{display:block;margin-top:0}
+    .doc-termo-imagem .testemunhas{margin-top:42px}
+    .doc-termo-imagem .testemunhas-titulo{font-weight:bold;margin-bottom:20px;text-align:left}
+    .doc-termo-imagem .duas-colunas{display:table;width:100%}
+    .doc-termo-imagem .coluna{display:table-cell;width:50%;padding:0 16px;vertical-align:top;text-align:left}
+    .doc-termo-imagem .linha-testemunha{border-top:1px solid #111;width:90%;height:1px;margin-bottom:7px}
+</style>
+<div class="doc-termo-imagem">
+    <h1>TERMO DE AUTORIZAÇÃO DE USO DE IMAGEM, VOZ E RESPECTIVA CESSÃO DE DIREITOS (LEI N. 9.610/98)</h1>
+
+    <p>Pelo presente instrumento, eu, <strong>{{funcionario_nome}}</strong>, portador(a) do RG nº <strong>{{funcionario_rg}}</strong> e do CPF nº <strong>{{funcionario_cpf}}</strong>, domiciliado(a) na cidade/estado <strong>{{funcionario_municipio}}/{{funcionario_uf}}</strong>, AUTORIZO, de forma gratuita e sem qualquer ônus, à <strong>{{empresa_nome}}</strong>, a utilização de minha(s) imagem(ns) e/ou voz e/ou de informações pessoais em suas divulgações, se houver, em todos os meios de divulgação possíveis, quer sejam na mídia impressa (livros, catálogos, revistas, jornais, entre outros), televisiva (propagandas para televisão aberta e/ou fechada, vídeos, filmes, entre outros), radiofônica (programas de rádio/podcasts), internet, mídia e rede social (Instagram, Facebook, WhatsApp entre outros), banco de dados informatizados, multimídia, entre outros, e nos meios de comunicação interna, como jornais e periódicos em geral, na forma de impresso, voz e imagem.</p>
+
+    <p>A presente autorização e cessão são outorgadas livre e espontaneamente, em caráter gratuito, não incorrendo à autorizada qualquer custo ou ônus, seja a que título for, sendo que estas são firmadas em caráter irrevogável, irretratável, e por prazo indeterminado, obrigando, inclusive, eventuais herdeiros e sucessores outorgantes.</p>
+
+    <p class="linha-local"><strong>{{empresa_municipio}}/{{empresa_uf}} {{data_hoje_extenso}}.</strong></p>
+
+    <div class="assinatura">
+        <strong>ASSINATURA</strong>
+        <span class="assinatura-nome">{{funcionario_nome}}</span>
+        <span class="assinatura-cpf">CPF: {{funcionario_cpf}}</span>
+    </div>
+
+    <div class="testemunhas">
+        <div class="testemunhas-titulo">TESTEMUNHAS:</div>
+        <div class="duas-colunas">
+            <div class="coluna">
+                <div class="linha-testemunha"></div>
+                CPF:
+            </div>
+            <div class="coluna">
+                <div class="linha-testemunha"></div>
+                CPF:
+            </div>
+        </div>
+    </div>
+</div>',
+    updated_at = NOW()
+WHERE slug = 'termo-autorizacao-uso-imagem'
+   OR chave = 'termo_autorizacao_uso_imagem'
+   OR nome = 'TERMO DE AUTORIZAÇÃO DE USO DE IMAGEM';

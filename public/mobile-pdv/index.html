@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PDV Mobile</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    body{font-family:Arial,sans-serif;margin:0;background:#f5f7fb;color:#1b1f24}
+    header{padding:16px;background:#111827;color:#fff}
+    main{padding:16px;max-width:760px;margin:0 auto}
+    .card{background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+    input,button,textarea{width:100%;padding:12px;border:1px solid #d1d5db;border-radius:10px;box-sizing:border-box}
+    button{background:#111827;color:#fff;border:none;margin-top:8px}
+    small{color:#6b7280}
+    pre{white-space:pre-wrap;background:#0f172a;color:#e2e8f0;padding:12px;border-radius:10px;overflow:auto}
+  </style>
+</head>
+<body>
+<header><strong>PDV Mobile</strong><div><small>Offline-first para vendas e sincronização posterior</small></div></header>
+<main>
+  <div class="card">
+    <label>Base URL da API</label>
+    <input id="baseUrl" value="/api/pdv">
+    <label style="display:block;margin-top:10px">Token / credencial PDV</label>
+    <input id="token" placeholder="Token PDV">
+    <button onclick="bootstrapData()">Baixar bootstrap</button>
+  </div>
+  <div class="card">
+    <label>Venda offline (JSON)</label>
+    <textarea id="salePayload" rows="10">{"numero_local":"MOB-001","itens":[],"valor_total":0}</textarea>
+    <button onclick="saveOfflineSale()">Salvar offline</button>
+    <button onclick="syncOfflineSales()">Sincronizar pendências</button>
+  </div>
+  <div class="card">
+    <strong>Status</strong>
+    <pre id="output">Aguardando ação...</pre>
+  </div>
+</main>
+<script>
+const DB_KEY = 'pdv-mobile-sales';
+function log(data){document.getElementById('output').textContent = typeof data==='string'?data:JSON.stringify(data,null,2)}
+function getSales(){return JSON.parse(localStorage.getItem(DB_KEY)||'[]')}
+function setSales(items){localStorage.setItem(DB_KEY, JSON.stringify(items))}
+async function bootstrapData(){
+  const base = document.getElementById('baseUrl').value;
+  try{
+    const res = await fetch(base + '/bootstrap', {headers:{'Accept':'application/json'}});
+    const data = await res.json();
+    localStorage.setItem('pdv-mobile-bootstrap', JSON.stringify(data));
+    log(data);
+  }catch(e){log('Falha ao baixar bootstrap: '+e.message)}
+}
+function saveOfflineSale(){
+  try{
+    const payload = JSON.parse(document.getElementById('salePayload').value);
+    const items = getSales();
+    items.push({...payload, offline_saved_at:new Date().toISOString()});
+    setSales(items);
+    log({message:'Venda salva offline', pendentes: items.length});
+  }catch(e){log('JSON inválido: '+e.message)}
+}
+async function syncOfflineSales(){
+  const base = document.getElementById('baseUrl').value;
+  const pending = getSales();
+  if(!pending.length){return log('Sem vendas pendentes.');}
+  const results = [];
+  for(const sale of pending){
+    try{
+      const res = await fetch(base + '/vendas/sincronizar', {
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify(sale)
+      });
+      results.push(await res.json());
+    }catch(e){results.push({error:e.message,sale})}
+  }
+  setSales([]);
+  log(results);
+}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}
+</script>
+</body>
+</html>

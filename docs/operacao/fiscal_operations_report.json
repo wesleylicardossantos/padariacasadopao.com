@@ -1,0 +1,12 @@
+{
+    "empresa_id": 1,
+    "documents_total": 0,
+    "prepared_total": 0,
+    "transmitted_total": 0,
+    "cancelled_total": 0,
+    "latest_documents": [],
+    "audit_total": 0,
+    "updated_at": "2026-04-23 11:32:58",
+    "database_available": false,
+    "database_error": "could not find driver (Connection: mysql, SQL: select * from information_schema.tables where table_schema = wesl4494_db_saas and table_name = fiscal_documents and table_type = 'BASE TABLE')"
+}

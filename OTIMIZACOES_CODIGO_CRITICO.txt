@@ -1,0 +1,13 @@
+Arquivos otimizados de forma real e aplicada:
+- app/Http/Controllers/Pdv/ProdutoController.php
+- app/Http/Controllers/RHV5DashboardController.php
+- app/Http/Controllers/AberturaCaixaController.php
+- app/Models/Produto.php
+- app/Models/Empresa.php
+
+Resumo:
+- remoção de N+1 em PDV
+- cache curto e agregações no dashboard RH
+- reaproveitamento de ConfigNota e eager loading no caixa
+- soma de estoque e locais com menos queries
+- contadores da Empresa direto no banco

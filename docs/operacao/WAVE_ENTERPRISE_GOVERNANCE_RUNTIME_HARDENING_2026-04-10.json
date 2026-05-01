@@ -1,0 +1,125 @@
+{
+    "generated_at": "2026-04-10 22:05:08",
+    "tenant_context_alias_registered": true,
+    "controllers": [
+        {
+            "controller": "App\\Modules\\AI\\Controllers\\GovernanceController",
+            "uses_tenant_trait": true,
+            "has_explicit_middleware": true
+        },
+        {
+            "controller": "App\\Modules\\BI\\Controllers\\GovernanceController",
+            "uses_tenant_trait": true,
+            "has_explicit_middleware": true
+        },
+        {
+            "controller": "App\\Modules\\Comercial\\Controllers\\GovernanceController",
+            "uses_tenant_trait": true,
+            "has_explicit_middleware": true
+        },
+        {
+            "controller": "App\\Modules\\Estoque\\Controllers\\GovernanceController",
+            "uses_tenant_trait": true,
+            "has_explicit_middleware": true
+        },
+        {
+            "controller": "App\\Modules\\Financeiro\\Controllers\\GovernanceController",
+            "uses_tenant_trait": true,
+            "has_explicit_middleware": true
+        },
+        {
+            "controller": "App\\Modules\\Fiscal\\Controllers\\GovernanceController",
+            "uses_tenant_trait": true,
+            "has_explicit_middleware": true
+        },
+        {
+            "controller": "App\\Modules\\PDV\\Controllers\\GovernanceController",
+            "uses_tenant_trait": true,
+            "has_explicit_middleware": true
+        },
+        {
+            "controller": "App\\Modules\\PDV\\Controllers\\MobileController",
+            "uses_tenant_trait": true,
+            "has_explicit_middleware": true
+        },
+        {
+            "controller": "App\\Modules\\SaaS\\Controllers\\GovernanceController",
+            "uses_tenant_trait": true,
+            "has_explicit_middleware": true
+        }
+    ],
+    "routes": [
+        {
+            "route": "enterprise.ai.index",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "enterprise_access": true,
+            "throttle_enterprise": true
+        },
+        {
+            "route": "enterprise.bi.index",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "enterprise_access": true,
+            "throttle_enterprise": true
+        },
+        {
+            "route": "enterprise.comercial.kpis",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "enterprise_access": true,
+            "throttle_enterprise": true
+        },
+        {
+            "route": "enterprise.estoque.index",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "enterprise_access": true,
+            "throttle_enterprise": true
+        },
+        {
+            "route": "enterprise.financeiro.index",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "enterprise_access": true,
+            "throttle_enterprise": true
+        },
+        {
+            "route": "enterprise.fiscal.snapshot",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "enterprise_access": true,
+            "throttle_enterprise": true
+        },
+        {
+            "route": "enterprise.pdv.index",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "enterprise_access": true,
+            "throttle_enterprise": true
+        },
+        {
+            "route": "enterprise.pdv.mobile",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "enterprise_access": true,
+            "throttle_enterprise": true
+        },
+        {
+            "route": "enterprise.saas.index",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "enterprise_access": true,
+            "throttle_enterprise": true
+        }
+    ]
+}

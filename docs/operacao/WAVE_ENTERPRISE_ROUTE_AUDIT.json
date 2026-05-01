@@ -1,0 +1,226 @@
+{
+    "generated_at": "2026-04-10T20:23:34-03:00",
+    "router_aliases": {
+        "auth": "App\\Http\\Middleware\\Authenticate",
+        "auth.basic": "Illuminate\\Auth\\Middleware\\AuthenticateWithBasicAuth",
+        "auth.session": "Illuminate\\Session\\Middleware\\AuthenticateSession",
+        "cache.headers": "Illuminate\\Http\\Middleware\\SetCacheHeaders",
+        "can": "Illuminate\\Auth\\Middleware\\Authorize",
+        "guest": "App\\Http\\Middleware\\RedirectIfAuthenticated",
+        "password.confirm": "Illuminate\\Auth\\Middleware\\RequirePassword",
+        "signed": "Illuminate\\Routing\\Middleware\\ValidateSignature",
+        "throttle": "Illuminate\\Routing\\Middleware\\ThrottleRequests",
+        "verified": "Illuminate\\Auth\\Middleware\\EnsureEmailIsVerified",
+        "valid": "App\\Http\\Middleware\\Valid",
+        "validNFCe": "App\\Http\\Middleware\\validNFCe",
+        "control": "App\\Http\\Middleware\\Control",
+        "csv": "App\\Http\\Middleware\\Csv",
+        "pedidoAtivo": "App\\Http\\Middleware\\PedidoAtivo",
+        "mesaAtiva": "App\\Http\\Middleware\\MesaAtiva",
+        "pedidoEstaAtivo": "App\\Http\\Middleware\\PedidoEstaAtivo",
+        "authApp": "App\\Http\\Middleware\\AuthApp",
+        "verificaEmpresa": "App\\Http\\Middleware\\VerificaEmpresa",
+        "validaEmpresa": "App\\Http\\Middleware\\ValidaEmpresa",
+        "validaAcesso": "App\\Http\\Middleware\\ValidaAcesso",
+        "limiteProdutos": "App\\Http\\Middleware\\LimiteProdutos",
+        "limiteClientes": "App\\Http\\Middleware\\LimiteClientes",
+        "limiteFornecedor": "App\\Http\\Middleware\\LimiteFornecedor",
+        "limiteNFe": "App\\Http\\Middleware\\LimiteNFe",
+        "limiteNFCe": "App\\Http\\Middleware\\LimiteNFCe",
+        "limiteCTe": "App\\Http\\Middleware\\LimiteCTe",
+        "limiteMDFe": "App\\Http\\Middleware\\LimiteMDFe",
+        "validaEvento": "App\\Http\\Middleware\\ValidaEvento",
+        "limiteEvento": "App\\Http\\Middleware\\LimiteEvento",
+        "limiteUsuarios": "App\\Http\\Middleware\\LimiteUsuarios",
+        "verificaContratoAssinado": "App\\Http\\Middleware\\VerificaContratoAssinado",
+        "validaEcommerce": "App\\Http\\Middleware\\ValidaEcommerce",
+        "acessoUsuario": "App\\Http\\Middleware\\AcessoUsuario",
+        "usuariosLogado": "App\\Http\\Middleware\\UsuariosLogado",
+        "limiteArmazenamento": "App\\Http\\Middleware\\LimiteArmazenamento",
+        "validaRepresentante": "App\\Http\\Middleware\\ValidaRepresentante",
+        "authEcommerce": "App\\Http\\Middleware\\AuthEcommerce",
+        "authPdv": "App\\Http\\Middleware\\AuthPdv",
+        "hashEmpresa": "App\\Http\\Middleware\\HashEmpresa",
+        "authDelivery": "App\\Http\\Middleware\\AuthDelivery",
+        "authAppComanda": "App\\Http\\Middleware\\AuthAppComanda",
+        "restrictMaintenance": "App\\Http\\Middleware\\RestrictMaintenanceRoute",
+        "enterpriseAccess": "App\\Http\\Middleware\\EnterpriseAccess",
+        "tenant.context": "App\\Http\\Middleware\\ResolveTenantContext",
+        "plan.limit": "App\\Http\\Middleware\\EnforceSaasPlan",
+        "portalFuncionario": "App\\Http\\Middleware\\VerificaPortalFuncionario",
+        "rh.permission": "App\\Http\\Middleware\\RHPermission"
+    },
+    "routes_checked": 10,
+    "checks": [
+        {
+            "route": "enterprise.ai.index",
+            "exists": true,
+            "uri": "enterprise\/ai",
+            "tenant_context": true,
+            "web": true,
+            "enterprise_access": true,
+            "verifica_empresa": true,
+            "throttle_enterprise": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "enterpriseAccess",
+                "verificaEmpresa",
+                "throttle:enterprise"
+            ]
+        },
+        {
+            "route": "enterprise.bi.index",
+            "exists": true,
+            "uri": "enterprise\/bi",
+            "tenant_context": true,
+            "web": true,
+            "enterprise_access": true,
+            "verifica_empresa": true,
+            "throttle_enterprise": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "enterpriseAccess",
+                "verificaEmpresa",
+                "throttle:enterprise"
+            ]
+        },
+        {
+            "route": "enterprise.financeiro.index",
+            "exists": true,
+            "uri": "enterprise\/financeiro",
+            "tenant_context": true,
+            "web": true,
+            "enterprise_access": true,
+            "verifica_empresa": true,
+            "throttle_enterprise": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "enterpriseAccess",
+                "verificaEmpresa",
+                "throttle:enterprise"
+            ]
+        },
+        {
+            "route": "enterprise.financeiro.operations",
+            "exists": true,
+            "uri": "enterprise\/financeiro\/operations",
+            "tenant_context": true,
+            "web": true,
+            "enterprise_access": true,
+            "verifica_empresa": true,
+            "throttle_enterprise": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "enterpriseAccess",
+                "verificaEmpresa",
+                "throttle:enterprise"
+            ]
+        },
+        {
+            "route": "enterprise.pdv.index",
+            "exists": true,
+            "uri": "enterprise\/pdv",
+            "tenant_context": true,
+            "web": true,
+            "enterprise_access": true,
+            "verifica_empresa": true,
+            "throttle_enterprise": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "enterpriseAccess",
+                "verificaEmpresa",
+                "throttle:enterprise"
+            ]
+        },
+        {
+            "route": "enterprise.pdv.mobile",
+            "exists": true,
+            "uri": "enterprise\/pdv\/mobile",
+            "tenant_context": true,
+            "web": true,
+            "enterprise_access": true,
+            "verifica_empresa": true,
+            "throttle_enterprise": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "enterpriseAccess",
+                "verificaEmpresa",
+                "throttle:enterprise"
+            ]
+        },
+        {
+            "route": "enterprise.fiscal.snapshot",
+            "exists": true,
+            "uri": "enterprise\/fiscal\/snapshot",
+            "tenant_context": true,
+            "web": true,
+            "enterprise_access": true,
+            "verifica_empresa": true,
+            "throttle_enterprise": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "enterpriseAccess",
+                "verificaEmpresa",
+                "throttle:enterprise"
+            ]
+        },
+        {
+            "route": "enterprise.comercial.kpis",
+            "exists": true,
+            "uri": "enterprise\/comercial\/kpis",
+            "tenant_context": true,
+            "web": true,
+            "enterprise_access": true,
+            "verifica_empresa": true,
+            "throttle_enterprise": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "enterpriseAccess",
+                "verificaEmpresa",
+                "throttle:enterprise"
+            ]
+        },
+        {
+            "route": "enterprise.estoque.index",
+            "exists": true,
+            "uri": "enterprise\/estoque",
+            "tenant_context": true,
+            "web": true,
+            "enterprise_access": true,
+            "verifica_empresa": true,
+            "throttle_enterprise": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "enterpriseAccess",
+                "verificaEmpresa",
+                "throttle:enterprise"
+            ]
+        },
+        {
+            "route": "enterprise.saas.index",
+            "exists": true,
+            "uri": "enterprise\/saas",
+            "tenant_context": true,
+            "web": true,
+            "enterprise_access": true,
+            "verifica_empresa": true,
+            "throttle_enterprise": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "enterpriseAccess",
+                "verificaEmpresa",
+                "throttle:enterprise"
+            ]
+        }
+    ]
+}

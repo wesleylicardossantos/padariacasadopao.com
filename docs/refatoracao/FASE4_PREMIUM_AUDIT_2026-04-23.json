@@ -1,0 +1,18 @@
+{
+    "generated_at": "2026-04-23T14:20:21-03:00",
+    "routes": {
+        "enterprise.saas.premium": true,
+        "enterprise.saas.executive": true,
+        "enterprise.saas.index": true
+    },
+    "tables": {
+        "saas_premium_notifications": false,
+        "saas_usage_snapshots": false,
+        "rh_alertas_inteligentes": false
+    },
+    "views": {
+        "resources/views/enterprise/saas/premium.blade.php": true,
+        "resources/views/enterprise/saas/executive.blade.php": true
+    },
+    "status": "ok"
+}

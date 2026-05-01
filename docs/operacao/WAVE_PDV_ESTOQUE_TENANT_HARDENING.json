@@ -1,0 +1,197 @@
+{
+    "generated_at": "2026-04-10 20:46:02",
+    "tenant_context_alias_registered": true,
+    "routes": [
+        {
+            "route": "estoque.index",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "estoque.store",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "estoque.apontamentoManual",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "estoque.listaApontamento",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "estoque.apontamentoProducao",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "estoque.todosApontamentos",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "estoque.storeApontamento",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "estoque.set-estoque-local",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "pdv.offline.monitor",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento"
+            ]
+        },
+        {
+            "route": "pdv.offline.monitor.data",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento"
+            ]
+        },
+        {
+            "route": "pdv.offline.monitor.reenviar_pendentes",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento"
+            ]
+        },
+        {
+            "route": "pdv.offline.monitor.reenviar_erros",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento"
+            ]
+        }
+    ],
+    "mobile_pdv_routes": [],
+    "controllers": [
+        {
+            "controller": "App\\Http\\Controllers\\StockController",
+            "uses_tenant_trait": true
+        },
+        {
+            "controller": "App\\Http\\Controllers\\Pdv\\ProdutoController",
+            "uses_tenant_trait": true
+        },
+        {
+            "controller": "App\\Http\\Controllers\\Pdv\\OfflineBootstrapController",
+            "uses_tenant_trait": true
+        },
+        {
+            "controller": "App\\Http\\Controllers\\Pdv\\OfflineVendaSyncController",
+            "uses_tenant_trait": true
+        },
+        {
+            "controller": "App\\Http\\Controllers\\Pdv\\OfflineSyncMonitorController",
+            "uses_tenant_trait": true
+        }
+    ]
+}

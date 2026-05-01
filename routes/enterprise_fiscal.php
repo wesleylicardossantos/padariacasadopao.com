@@ -1,0 +1,2 @@
+<?php
+// rotas fiscal

@@ -1,0 +1,278 @@
+<?php
+
+namespace App\Services;
+
+use App\Models\EventoSalario;
+use App\Models\Funcionario;
+use App\Models\FuncionarioEvento;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+
+class RHDefaultPayrollEventService
+{
+    public const DEFAULT_EVENTS = [
+        [
+            'codigo' => 'SALARIO',
+            'nome' => 'SALARIO',
+            'tipo' => 'mensal',
+            'metodo' => 'fixo',
+            'condicao' => 'soma',
+            'tipo_valor' => 'fixo',
+            'ordem_calculo' => 10,
+            'formula' => 'funcionario.salario',
+            'incide_inss' => 1,
+            'incide_fgts' => 1,
+            'incide_irrf' => 1,
+        ],
+        [
+            'codigo' => 'INSS',
+            'nome' => 'INSS',
+            'tipo' => 'mensal',
+            'metodo' => 'fixo',
+            'condicao' => 'diminui',
+            'tipo_valor' => 'fixo',
+            'ordem_calculo' => 900,
+            'formula' => 'calc_inss',
+            'incide_inss' => 0,
+            'incide_fgts' => 0,
+            'incide_irrf' => 0,
+        ],
+        [
+            'codigo' => 'IRRF',
+            'nome' => 'IRRF',
+            'tipo' => 'mensal',
+            'metodo' => 'fixo',
+            'condicao' => 'diminui',
+            'tipo_valor' => 'fixo',
+            'ordem_calculo' => 950,
+            'formula' => 'calc_irrf',
+            'incide_inss' => 0,
+            'incide_fgts' => 0,
+            'incide_irrf' => 0,
+        ],
+        [
+            'codigo' => 'FGTS',
+            'nome' => 'FGTS',
+            'tipo' => 'mensal',
+            'metodo' => 'fixo',
+            'condicao' => 'soma',
+            'tipo_valor' => 'fixo',
+            'ordem_calculo' => 980,
+            'formula' => 'calc_fgts',
+            'incide_inss' => 0,
+            'incide_fgts' => 0,
+            'incide_irrf' => 0,
+        ],
+    ];
+
+    public function ensureDefaultsForEmpresa(int $empresaId): void
+    {
+        if ($empresaId <= 0 || !Schema::hasTable('evento_salarios')) {
+            return;
+        }
+
+        foreach (self::DEFAULT_EVENTS as $event) {
+            $models = $this->findEmpresaDefaultEventCandidates($empresaId, $event)
+                ->orderByDesc('ativo')
+                ->orderByDesc('id')
+                ->get()
+                ->filter(fn ($item) => $item instanceof EventoSalario)
+                ->values();
+            $model = $models->first();
+            if (!$model instanceof EventoSalario) {
+                $payload = $this->eventPayload($empresaId, $event);
+                EventoSalario::create($payload);
+                continue;
+            }
+
+            if ($models->count() > 1) {
+                $this->mergeDuplicateEvents($model, $models->slice(1)->pluck('id')->all());
+            }
+
+            $dirty = false;
+            foreach ($this->eventPayload($empresaId, $event) as $column => $value) {
+                if ($column === 'ativo') {
+                    continue;
+                }
+
+                if (Schema::hasColumn('evento_salarios', $column) && $model->{$column} != $value) {
+                    $model->{$column} = $value;
+                    $dirty = true;
+                }
+            }
+            if ($dirty) {
+                $model->save();
+            }
+        }
+    }
+
+    public function syncFuncionarioBaseEvents(Funcionario $funcionario, int $empresaId): void
+    {
+        if (!Schema::hasTable('funcionario_eventos') || !Schema::hasTable('evento_salarios')) {
+            return;
+        }
+
+        $this->ensureDefaultsForEmpresa($empresaId);
+
+        DB::transaction(function () use ($funcionario, $empresaId) {
+            $map = collect();
+
+            EventoSalario::query()
+                ->where('empresa_id', $empresaId)
+                ->where(function ($query) {
+                    $query->whereIn(DB::raw('UPPER(nome)'), ['SALARIO', 'INSS', 'IRRF', 'FGTS']);
+
+                    if (Schema::hasColumn('evento_salarios', 'codigo')) {
+                        $query->orWhereIn(DB::raw('UPPER(codigo)'), ['SALARIO', 'INSS', 'IRRF', 'FGTS']);
+                    }
+                })
+                ->orderByDesc('ativo')
+                ->orderByDesc('id')
+                ->get()
+                ->each(function ($item) use (&$map) {
+                    if (!$item instanceof EventoSalario) {
+                        return;
+                    }
+
+                    $keys = [mb_strtoupper((string) $item->nome)];
+                    if (Schema::hasColumn('evento_salarios', 'codigo') && !empty($item->codigo)) {
+                        array_unshift($keys, mb_strtoupper((string) $item->codigo));
+                    }
+
+                    foreach (array_unique($keys) as $key) {
+                        if (!$map->has($key)) {
+                            $map->put($key, $item);
+                        }
+                    }
+                });
+
+            foreach (['SALARIO', 'INSS', 'IRRF', 'FGTS'] as $codigo) {
+                $evento = $map->get($codigo);
+                if (!$evento) {
+                    continue;
+                }
+
+                $payload = [
+                    'condicao' => $evento->condicao,
+                    'metodo' => $evento->metodo,
+                    'valor' => $codigo === 'SALARIO' ? round((float) ($funcionario->salario ?? 0), 2) : 0,
+                    'ativo' => (Schema::hasColumn('evento_salarios', 'ativo') ? (int) ($evento->ativo ?? 1) : 1),
+                ];
+
+                if (Schema::hasColumn('funcionario_eventos', 'empresa_id')) {
+                    $payload['empresa_id'] = $empresaId;
+                }
+                if (Schema::hasColumn('funcionario_eventos', 'referencia')) {
+                    $payload['referencia'] = $codigo === 'SALARIO' ? 30 : 0;
+                }
+                if (Schema::hasColumn('funcionario_eventos', 'tipo_calculo')) {
+                    $payload['tipo_calculo'] = $codigo === 'SALARIO' ? 'fixo' : 'formula';
+                }
+
+                $row = FuncionarioEvento::query()
+                    ->where('funcionario_id', $funcionario->id)
+                    ->where('evento_id', $evento->id)
+                    ->first();
+
+                if ($row) {
+                    $row->fill($payload);
+                    $row->save();
+                } else {
+                    FuncionarioEvento::create($payload + [
+                        'funcionario_id' => $funcionario->id,
+                        'evento_id' => $evento->id,
+                    ]);
+                }
+            }
+        });
+    }
+
+
+    private function findEmpresaDefaultEventCandidates(int $empresaId, array $event)
+    {
+        return EventoSalario::query()
+            ->where('empresa_id', $empresaId)
+            ->where(function ($query) use ($event) {
+                $query->whereRaw('UPPER(nome) = ?', [mb_strtoupper((string) $event['nome'])]);
+
+                if (Schema::hasColumn('evento_salarios', 'codigo')) {
+                    $query->orWhereRaw('UPPER(COALESCE(codigo, nome)) = ?', [mb_strtoupper((string) $event['codigo'])]);
+                }
+            });
+    }
+
+    private function eventPayload(int $empresaId, array $event): array
+    {
+        $payload = [
+            'empresa_id' => $empresaId,
+            'nome' => $event['nome'],
+            'tipo' => $event['tipo'],
+            'metodo' => $event['metodo'],
+            'condicao' => $event['condicao'],
+            'tipo_valor' => $event['tipo_valor'],
+            'ativo' => 1,
+        ];
+
+        foreach (['codigo', 'ordem_calculo', 'formula'] as $column) {
+            if (Schema::hasColumn('evento_salarios', $column)) {
+                $payload[$column] = $event[$column] ?? null;
+            }
+        }
+
+        foreach (['sistema_padrao', 'padrao_sistema'] as $column) {
+            if (Schema::hasColumn('evento_salarios', $column)) {
+                $payload[$column] = 1;
+            }
+        }
+
+        foreach (['incide_inss', 'incidencia_inss'] as $column) {
+            if (Schema::hasColumn('evento_salarios', $column)) {
+                $payload[$column] = $event['incide_inss'] ?? 0;
+            }
+        }
+        foreach (['incide_fgts', 'incidencia_fgts'] as $column) {
+            if (Schema::hasColumn('evento_salarios', $column)) {
+                $payload[$column] = $event['incide_fgts'] ?? 0;
+            }
+        }
+        foreach (['incide_irrf', 'incidencia_irrf'] as $column) {
+            if (Schema::hasColumn('evento_salarios', $column)) {
+                $payload[$column] = $event['incide_irrf'] ?? 0;
+            }
+        }
+
+        return $payload;
+    }
+
+
+    private function mergeDuplicateEvents(EventoSalario $keeper, array $duplicateIds): void
+    {
+        $duplicateIds = array_values(array_filter(array_unique(array_map('intval', $duplicateIds))));
+        if (!$duplicateIds) {
+            return;
+        }
+
+        DB::transaction(function () use ($keeper, $duplicateIds) {
+            if (Schema::hasTable('funcionario_eventos')) {
+                $rows = FuncionarioEvento::query()->whereIn('evento_id', $duplicateIds)->get();
+                foreach ($rows as $row) {
+                    $exists = FuncionarioEvento::query()
+                        ->where('funcionario_id', $row->funcionario_id)
+                        ->where('evento_id', $keeper->id)
+                        ->exists();
+
+                    if ($exists) {
+                        $row->delete();
+                        continue;
+                    }
+
+                    $row->evento_id = $keeper->id;
+                    $row->save();
+                }
+            }
+
+            EventoSalario::query()->whereIn('id', $duplicateIds)->delete();
+        });
+    }
+
+}

@@ -1,0 +1,145 @@
+{
+    "generated_at": "2026-04-14 08:01:28",
+    "routes": {
+        "priority_files": [
+            "/mnt/data/work/project/routes/web.php",
+            "/mnt/data/work/project/routes/web_export_routes.php",
+            "/mnt/data/work/project/routes/aliases/web.php",
+            "/mnt/data/work/project/routes/patches/web/controle_relatorio_vendas_resumido.php",
+            "/mnt/data/work/project/app/Modules/RH/Routes/web.php",
+            "/mnt/data/work/project/app/Modules/Financeiro/Routes/web.php",
+            "/mnt/data/work/project/app/Modules/Estoque/Routes/web.php",
+            "/mnt/data/work/project/app/Modules/Comercial/Routes/web.php",
+            "/mnt/data/work/project/app/Modules/PDV/Routes/web.php",
+            "/mnt/data/work/project/app/Modules/BI/Routes/web.php",
+            "/mnt/data/work/project/app/Modules/Fiscal/Routes/web.php",
+            "/mnt/data/work/project/app/Modules/SaaS/Routes/web.php",
+            "/mnt/data/work/project/app/Modules/AI/Routes/web.php"
+        ],
+        "priority_directories": [
+            "/mnt/data/work/project/routes",
+            "/mnt/data/work/project/routes/aliases",
+            "/mnt/data/work/project/routes/modules",
+            "/mnt/data/work/project/app/Modules"
+        ],
+        "loaded_files": [
+            "/mnt/data/work/project/routes/web.php",
+            "/mnt/data/work/project/routes/web_export_routes.php",
+            "/mnt/data/work/project/routes/aliases/web.php",
+            "/mnt/data/work/project/routes/patches/web/controle_relatorio_vendas_resumido.php",
+            "/mnt/data/work/project/app/Modules/RH/Routes/web.php",
+            "/mnt/data/work/project/app/Modules/Financeiro/Routes/web.php",
+            "/mnt/data/work/project/app/Modules/Estoque/Routes/web.php",
+            "/mnt/data/work/project/app/Modules/Comercial/Routes/web.php",
+            "/mnt/data/work/project/app/Modules/PDV/Routes/web.php",
+            "/mnt/data/work/project/app/Modules/BI/Routes/web.php",
+            "/mnt/data/work/project/app/Modules/Fiscal/Routes/web.php",
+            "/mnt/data/work/project/app/Modules/SaaS/Routes/web.php",
+            "/mnt/data/work/project/app/Modules/AI/Routes/web.php",
+            "/mnt/data/work/project/routes/modules/pdv/web.php"
+        ]
+    },
+    "metrics": {
+        "controllers": 292,
+        "models": 249,
+        "services": 33,
+        "module_services": 179,
+        "migrations": 282,
+        "views": 835,
+        "route_files": 14,
+        "session_user_logged_occurrences": 171,
+        "env_usage_occurrences": 323
+    },
+    "modules": [
+        {
+            "name": "AI",
+            "controllers": 1,
+            "services": 4,
+            "routes": 1,
+            "views": 0
+        },
+        {
+            "name": "BI",
+            "controllers": 1,
+            "services": 3,
+            "routes": 1,
+            "views": 0
+        },
+        {
+            "name": "Comercial",
+            "controllers": 3,
+            "services": 4,
+            "routes": 1,
+            "views": 0
+        },
+        {
+            "name": "Estoque",
+            "controllers": 1,
+            "services": 4,
+            "routes": 1,
+            "views": 0
+        },
+        {
+            "name": "Financeiro",
+            "controllers": 2,
+            "services": 10,
+            "routes": 1,
+            "views": 0
+        },
+        {
+            "name": "Fiscal",
+            "controllers": 2,
+            "services": 7,
+            "routes": 1,
+            "views": 0
+        },
+        {
+            "name": "PDV",
+            "controllers": 2,
+            "services": 7,
+            "routes": 1,
+            "views": 0
+        },
+        {
+            "name": "RH",
+            "controllers": 39,
+            "services": 8,
+            "routes": 1,
+            "views": 2
+        },
+        {
+            "name": "SaaS",
+            "controllers": 1,
+            "services": 9,
+            "routes": 1,
+            "views": 0
+        }
+    ],
+    "legacy": {
+        "legacy_routes": [
+            "web1.php",
+            "web2.php",
+            "web_admin_ultra_estavel.php",
+            "web_export_routes.php"
+        ],
+        "web_patches": [
+            "controle_relatorio_vendas_resumido.php",
+            "web_patch_ia_aprendizado.php",
+            "web_patch_ia_aprendizado_method.php",
+            "web_patch_ia_aprovacao.php",
+            "web_patch_ia_aprovacao_method.php",
+            "web_patch_ia_autonoma.php",
+            "web_patch_nivel_absurdo_maximo.php",
+            "web_patch_nivel_maximo.php",
+            "web_patch_preditivo_alertas.php",
+            "web_patch_snippet.php",
+            "web_patch_tudo_nivel_maximo.php"
+        ],
+        "admin_patches": [
+            "admin_dashboard_routes_patch.php",
+            "admin_pro_plus_routes_patch.php",
+            "admin_routes_patch.php",
+            "ultimate_patch_routes.php"
+        ]
+    }
+}

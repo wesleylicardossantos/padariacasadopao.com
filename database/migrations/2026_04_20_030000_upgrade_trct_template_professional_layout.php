@@ -1,0 +1,217 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        if (!Schema::hasTable('rh_document_templates')) {
+            return;
+        }
+
+        $html = <<<'HTML'
+<div class="trct-document">
+<table>
+    <tr>
+        <td class="title">TERMO DE RESCISÃO DO CONTRATO DE TRABALHO</td>
+    </tr>
+</table>
+
+<table class="top-gap">
+    <tr>
+        <td class="side" rowspan="3"><div class="vertical">IDENTIFICAÇÃO DO EMPREGADOR</div></td>
+        <td colspan="4"><span class="code">01 – CNPJ / CEI</span><div class="value xbig">{{empresa_cnpj}}</div></td>
+        <td colspan="8"><span class="code">02 – Razão Social / Nome</span><div class="value xbig">{{empresa_razao_social}}</div></td>
+    </tr>
+    <tr>
+        <td colspan="9"><span class="code">03 – Endereço (Logradouro, Nº, Andar, Apartamento)</span><div class="value xbig">{{empresa_logradouro}}, {{empresa_numero}}</div></td>
+        <td colspan="3"><span class="code">04 – Bairro</span><div class="value xbig">{{empresa_bairro}}</div></td>
+    </tr>
+    <tr>
+        <td colspan="5"><span class="code">05 – Município</span><div class="value xbig">{{empresa_municipio}}</div></td>
+        <td colspan="1"><span class="code">06 – UF</span><div class="value xbig center">{{empresa_uf}}</div></td>
+        <td colspan="2"><span class="code">07 – CEP</span><div class="value xbig center">{{empresa_cep}}</div></td>
+        <td colspan="2"><span class="code">08 – CNAE</span><div class="value big">{{empresa_cnae}}</div></td>
+        <td colspan="2"><span class="code">09 – CNPJ / CEI Tomador/Obra</span><div class="value big">{{empresa_tomador_obra}}</div></td>
+    </tr>
+</table>
+
+<table class="top-gap">
+    <tr>
+        <td class="side" rowspan="4"><div class="vertical">IDENTIFICAÇÃO DO TRABALHADOR</div></td>
+        <td colspan="4"><span class="code">10 – PIS – PASEP</span><div class="value xbig">{{funcionario_pis}}</div></td>
+        <td colspan="8"><span class="code">11 – Nome</span><div class="value xbig">{{funcionario_nome}}</div></td>
+    </tr>
+    <tr>
+        <td colspan="9"><span class="code">12 – Endereço (Logradouro, Nº, Andar, Apartamento)</span><div class="value xbig">{{funcionario_logradouro}}, {{funcionario_numero}}</div></td>
+        <td colspan="3"><span class="code">13 – Bairro</span><div class="value xbig">{{funcionario_bairro}}</div></td>
+    </tr>
+    <tr>
+        <td colspan="5"><span class="code">14 – Município</span><div class="value xbig">{{funcionario_municipio}}</div></td>
+        <td colspan="1"><span class="code">15 – UF</span><div class="value xbig center">{{funcionario_uf}}</div></td>
+        <td colspan="2"><span class="code">16 – CEP</span><div class="value xbig center">{{funcionario_cep}}</div></td>
+        <td colspan="4"><span class="code">17 – Carteira de Trabalho (Número, Série e UF)</span><div class="value xbig">{{funcionario_ctps}} {{funcionario_ctps_serie}}</div></td>
+    </tr>
+    <tr>
+        <td colspan="4"><span class="code">18 – CPF</span><div class="value xbig">{{funcionario_cpf}}</div></td>
+        <td colspan="2"><span class="code">19 – Data de Nascimento</span><div class="value xbig center">{{funcionario_data_nascimento}}</div></td>
+        <td colspan="6"><span class="code">20 – Nome da Mãe</span><div class="value xbig">{{funcionario_mae}}</div></td>
+    </tr>
+</table>
+
+<table class="top-gap">
+    <tr>
+        <td class="side" rowspan="2"><div class="vertical">DADOS DO CONTRATO</div></td>
+        <td colspan="3"><span class="code">21 – Remuneração p/ Fins Rescisórios</span><div class="value xbig center">{{funcionario_salario}}</div></td>
+        <td colspan="3"><span class="code">22 – Data de Admissão</span><div class="value xbig center">{{funcionario_data_admissao}}</div></td>
+        <td colspan="3"><span class="code">23 – Data do Aviso Prévio</span><div class="value xbig center">{{aviso_previo_data}}</div></td>
+        <td colspan="3"><span class="code">24 – Data do Afastamento</span><div class="value xbig center">{{data_rescisao}}</div></td>
+    </tr>
+    <tr>
+        <td colspan="5"><span class="code">25 – Causa do Afastamento</span><div class="value xbig">{{tipo_rescisao}}</div></td>
+        <td colspan="2"><span class="code">26 – Cód. Afastamento</span><div class="value xbig center">{{codigo_afastamento}}</div></td>
+        <td colspan="2"><span class="code">27 – Pensão Alimentícia (%)</span><div class="value xbig center">{{pensao_alimenticia}}</div></td>
+        <td colspan="3"><span class="code">28 – Categoria do Trabalhador</span><div class="value xbig">{{categoria_trabalhador}}</div></td>
+    </tr>
+</table>
+
+<table class="top-gap tight">
+    <tr>
+        <td class="side" rowspan="9"><div class="vertical">DESCRIMINAÇÃO DAS VERBAS RESCISÓRIAS</div></td>
+        <td class="center mini">&nbsp;</td>
+        <td class="center mini">Valor</td>
+        <td class="center mini">&nbsp;</td>
+        <td class="center mini">Valor</td>
+        <td class="center mini">DEDUÇÕES</td>
+        <td class="center mini">Valor</td>
+    </tr>
+    <tr>
+        <td><span class="code">29 – Aviso Prévio</span><div class="value big">{{verba_29_referencia}}</div></td>
+        <td class="money">{{verba_29_aviso_previo}}</td>
+        <td><span class="code">38 – Comissões</span><div class="value big">{{verba_38_referencia}}</div></td>
+        <td class="money">{{verba_38_comissoes}}</td>
+        <td><span class="code">47 – Previdência</span><div class="value big">{{verba_47_referencia}}</div></td>
+        <td class="money">{{verba_47_previdencia}}</td>
+    </tr>
+    <tr>
+        <td><span class="code">30 – Saldo de Salário</span><div class="value big">{{verba_30_referencia}}</div></td>
+        <td class="money">{{verba_30_saldo_salario}}</td>
+        <td><span class="code">39 – Gratificações</span><div class="value big">{{verba_39_referencia}}</div></td>
+        <td class="money">{{verba_39_gratificacoes}}</td>
+        <td><span class="code">48 – Previdência 13º Salário</span><div class="value big">{{verba_48_referencia}}</div></td>
+        <td class="money">{{verba_48_previdencia_decimo}}</td>
+    </tr>
+    <tr>
+        <td><span class="code">31 – 13º Salário</span><div class="value big">{{verba_31_referencia}}</div></td>
+        <td class="money">{{verba_31_decimo_salario}}</td>
+        <td><span class="code">40 – Horas Extras</span><div class="value big">{{verba_40_referencia}}</div></td>
+        <td class="money">{{verba_40_horas_extras}}</td>
+        <td><span class="code">49 – Adiantamento</span><div class="value big">{{verba_49_referencia}}</div></td>
+        <td class="money">{{verba_49_adiantamento}}</td>
+    </tr>
+    <tr>
+        <td><span class="code">32 – 13º Sal. Indenizado</span><div class="value big">{{verba_32_referencia}}</div></td>
+        <td class="money">{{verba_32_decimo_indenizado}}</td>
+        <td><span class="code">41 – Adicional Insalub./Periculosidade</span><div class="value big">{{verba_41_referencia}}</div></td>
+        <td class="money">{{verba_41_adicional}}</td>
+        <td><span class="code">50 – IRRF</span><div class="value big">{{verba_50_referencia}}</div></td>
+        <td class="money">{{verba_50_irrf}}</td>
+    </tr>
+    <tr>
+        <td><span class="code">33 – Férias Vencidas</span><div class="value big">{{verba_33_referencia}}</div></td>
+        <td class="money">{{verba_33_ferias_vencidas}}</td>
+        <td><span class="code">42 – Férias Indenizada</span><div class="value big">{{verba_42_referencia}}</div></td>
+        <td class="money">{{verba_42_ferias_indenizada}}</td>
+        <td><span class="code">51 –</span><div class="value big">{{verba_51_referencia}}</div></td>
+        <td class="money">{{verba_51_valor}}</td>
+    </tr>
+    <tr>
+        <td><span class="code">34 – Férias Proporcionais</span><div class="value big">{{verba_34_referencia}}</div></td>
+        <td class="money">{{verba_34_ferias_proporcionais}}</td>
+        <td><span class="code">43 – 1/3 /Férias</span><div class="value big">{{verba_43_referencia}}</div></td>
+        <td class="money">{{verba_43_terco_ferias}}</td>
+        <td><span class="code">52 –</span><div class="value big">{{verba_52_referencia}}</div></td>
+        <td class="money">{{verba_52_valor}}</td>
+    </tr>
+    <tr>
+        <td><span class="code">35 – 1/3 Salário S/Férias</span><div class="value big">{{verba_35_referencia}}</div></td>
+        <td class="money">{{verba_35_terco_salario_ferias}}</td>
+        <td><span class="code">44 – FGTS</span><div class="value big">{{verba_44_referencia}}</div></td>
+        <td class="money">{{verba_44_fgts}}</td>
+        <td><span class="code">53 –</span><div class="value big">{{verba_53_referencia}}</div></td>
+        <td class="money">{{verba_53_valor}}</td>
+    </tr>
+    <tr>
+        <td><span class="code">36 – Salário Família</span><div class="value big">{{verba_36_referencia}}</div></td>
+        <td class="money">{{verba_36_salario_familia}}</td>
+        <td><span class="code">45 – 40% FGTS</span><div class="value big">{{verba_45_referencia}}</div></td>
+        <td class="money">{{verba_45_multa_fgts}}</td>
+        <td><span class="code">54 – Total das Deduções</span></td>
+        <td class="money">{{verba_54_total_deducoes}}</td>
+    </tr>
+    <tr>
+        <td><span class="code">37 – Adicional Noturno</span><div class="value big">{{verba_37_referencia}}</div></td>
+        <td class="money">{{verba_37_adicional_noturno}}</td>
+        <td><span class="code">46 – Total Bruto</span></td>
+        <td class="money">{{verba_46_total_bruto}}</td>
+        <td><span class="code">55 – Líquido a Receber</span></td>
+        <td class="money">{{verba_55_liquido_receber}}</td>
+    </tr>
+</table>
+
+<table class="top-gap">
+    <tr>
+        <td class="side" rowspan="4"><div class="vertical">FORMALIZAÇÃO DA RESCISÃO</div></td>
+        <td colspan="5"><span class="code">56 – Local e Data do Recebimento</span><div class="value xbig center">{{local_recebimento}} – {{data_recebimento}}</div></td>
+        <td colspan="5"><span class="code">57 – Carimbo e Assinatura do Empregador ou Preposto</span><div class="signature-box"></div></td>
+    </tr>
+    <tr>
+        <td colspan="5"><span class="code">58 – Assinatura do Trabalhador</span><div class="signature-box"></div></td>
+        <td colspan="5"><span class="code">59 – Assinatura do Responsável Legal do Trabalhador</span><div class="signature-box"></div></td>
+    </tr>
+    <tr>
+        <td colspan="5"><span class="code">60 – HOMOLOGAÇÃO</span><div class="mini homolog-box">{{homologacao_texto}}<br><br>{{local_recebimento}}, {{data_recebimento}}<br><br>Local e Data<br><br>{{carimbo_assistente}}</div></td>
+        <td colspan="2"><span class="code">61 – Digital do Trabalhador</span><div class="homolog-box"></div></td>
+        <td colspan="3"><span class="code">62 – Digital do Responsável Legal</span><div class="homolog-box"></div></td>
+    </tr>
+    <tr>
+        <td colspan="5"><span class="code">63 – Identificação do Órgão Homologador</span><div class="orgao-box mini">{{orgao_homologador}}</div></td>
+        <td colspan="5"><span class="code">64 – Recepção pelo Banco (data e carimbo)</span><div class="bank-box"></div></td>
+    </tr>
+</table>
+</div>
+HTML;
+
+        $payload = [
+            'nome' => 'Termo de Rescisão do Contrato de Trabalho',
+            'slug' => 'termo-rescisao',
+            'categoria' => 'rescisao',
+            'tipo_documento' => 'rescisao',
+            'descricao' => 'Layout profissional do TRCT em grade oficial, fiel ao modelo Word.',
+            'conteudo_html' => $html,
+            'conteudo_texto' => 'Termo de Rescisão do Contrato de Trabalho',
+            'usa_ia' => 0,
+            'ativo' => 1,
+            'versao' => '2.0',
+            'updated_at' => now(),
+        ];
+
+        $exists = DB::table('rh_document_templates')->where('slug', 'termo-rescisao')->exists();
+        if ($exists) {
+            DB::table('rh_document_templates')->where('slug', 'termo-rescisao')->update($payload);
+            return;
+        }
+
+        DB::table('rh_document_templates')->insert(array_merge($payload, [
+            'empresa_id' => null,
+            'created_at' => now(),
+        ]));
+    }
+
+    public function down(): void
+    {
+    }
+};

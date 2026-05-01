@@ -1,0 +1,4 @@
+@extends('default.layout', ['title' => 'Backups'])
+@section('content')
+<div class="page-content"><div class="card"><div class="card-body"><div class="d-flex justify-content-between align-items-center mb-3"><h4 class="mb-0">Backups do Sistema</h4><div><a href="/__admin" class="btn btn-dark">Dashboard</a></div></div>@if(count($items) > 0)<table class="table table-bordered table-sm"><thead><tr><th>Arquivo</th><th>Tamanho</th><th>Data</th></tr></thead><tbody>@foreach($items as $item)<tr><td>{{ $item['nome'] }}</td><td>{{ $item['tamanho'] }}</td><td>{{ $item['data'] }}</td></tr>@endforeach</tbody></table>@else<div class="alert alert-light mb-0">Nenhum backup encontrado em storage/backups.</div>@endif</div></div></div>
+@endsection

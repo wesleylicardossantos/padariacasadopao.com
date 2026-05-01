@@ -1,0 +1,68 @@
+# Schema Drift Report (código x dump)
+
+- Gerado em: 2026-04-14T10:51:57.764150+00:00
+- Fonte analisada: /mnt/data/work/db/wesl4494_db_saas.sql
+- SQL analisado: wesl4494_db_saas.sql
+- Migrations no código: 282
+- Migrations registradas no dump: 237
+- Tabelas detectadas no dump: 302
+
+## Tabelas críticas
+- migrations: presente
+- estoques: presente
+- stock_movements: presente
+- pdv_offline_syncs: presente
+- financial_audits: presente
+- fiscal_documents: presente
+- conta_recebers: presente
+- conta_pagars: presente
+
+## Migrations do código ausentes no dump
+- 2026_01_02_create_fiscal_documents_table
+- 2026_02_24_012930_create_funcionarios_dependentes_table
+- 2026_02_24_012930_create_funcionarios_ficha_admissao_table
+- 2026_03_05_000001_add_deleted_at_to_venda_caixas_table
+- 2026_03_21_133500_create_pdv_offline_syncs_table
+- 2026_03_21_144500_fix_pdv_offline_syncs_missing_columns
+- 2026_03_21_151500_add_retry_columns_to_pdv_offline_syncs_table
+- 2026_03_21_235000_create_saas_plan_features_table
+- 2026_03_21_235100_create_saas_subscription_cycles_table
+- 2026_03_21_235200_create_saas_usage_snapshots_table
+- 2026_03_21_235300_create_saas_tenant_settings_table
+- 2026_03_22_020000_create_ai_business_insights_table
+- 2026_03_22_020100_create_saas_tenant_metrics_table
+- 2026_03_22_113000_add_branding_columns_to_empresas_table
+- 2026_03_27_000001_create_jobs_table
+- 2026_03_27_000001_padroniza_rh_empresa_id
+- 2026_03_27_000002_create_rh_holerite_envio_lotes_table
+- 2026_03_27_000003_create_rh_holerite_envios_table
+- 2026_03_27_100000_create_rh_portal_funcionarios_table
+- 2026_03_27_120000_add_mercadopago_enterprise_support
+- 2026_03_27_120100_create_queue_tables_if_not_exists
+- 2026_03_29_210000_create_stock_movements_table
+- 2026_04_02_000001_add_filial_id_to_stock_movements_if_missing
+- 2026_04_02_010000_harden_pdv_offline_syncs_for_idempotency
+- 2026_04_03_100000_expand_pdv_offline_statuses
+- 2026_04_03_100100_add_updated_at_to_financial_audits_if_missing
+- 2026_04_05_235900_add_final_hardening_indexes_wave3
+- 2026_04_06_190000_add_produtos_permission_to_rh_portal_funcionarios
+- 2026_04_06_210000_create_rh_portal_perfis_table
+- 2026_04_06_211000_add_rbac_columns_to_rh_portal_funcionarios
+- 2026_04_06_235000_create_rh_competencias_table
+- 2026_04_06_235100_create_rh_folha_itens_table
+- 2026_04_06_235200_extend_evento_salarios_for_payroll_engine
+- 2026_04_06_235300_extend_funcionario_eventos_for_payroll_engine
+- 2026_04_06_235400_extend_apuracao_mensals_for_payroll_engine
+- 2026_04_06_235500_seed_default_payroll_events_and_sync_salary
+- 2026_04_07_000000_extend_rh_competencias_table_if_needed
+- 2026_04_07_160000_create_controle_salgados_table
+- 2026_04_07_160100_create_controle_salgado_itens_table
+- 2026_04_08_230000_create_rh_dossies_table
+- 2026_04_08_230100_create_rh_dossie_eventos_table
+- 2026_04_08_230200_extend_rh_documentos_for_dossie_module
+- 2026_04_09_120000_create_rh_acl_tables
+- 2026_04_09_120100_add_source_uid_to_rh_dossie_eventos
+- 2026_04_10_000100_deduplicate_evento_salarios
+
+## Migrations registradas no dump mas ausentes no código
+- Nenhuma

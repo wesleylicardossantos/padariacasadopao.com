@@ -1,0 +1,147 @@
+{
+    "generated_at": "2026-04-23T11:32:05-03:00",
+    "flags": {
+        "stock_monitor_direct_legacy_writes": true,
+        "stock_block_direct_legacy_writes": true,
+        "hardening_enforce_public_surface_review": true,
+        "hardening_index_review_enabled": true
+    },
+    "public_surface": {
+        "count": 0,
+        "findings": []
+    },
+    "index_coverage": [
+        {
+            "table": "pdv_offline_syncs",
+            "exists": false,
+            "columns": []
+        },
+        {
+            "table": "stock_movements",
+            "exists": false,
+            "columns": []
+        },
+        {
+            "table": "financial_audits",
+            "exists": false,
+            "columns": []
+        },
+        {
+            "table": "commercial_audits",
+            "exists": false,
+            "columns": []
+        },
+        {
+            "table": "fiscal_documents",
+            "exists": false,
+            "columns": []
+        },
+        {
+            "table": "fiscal_audits",
+            "exists": false,
+            "columns": []
+        }
+    ],
+    "dead_code_candidates": {
+        "count": 16,
+        "candidates": [
+            {
+                "path": "app/Console/Commands_register_patch_tudo_nivel_maximo.php",
+                "reason": "Nome sugere código temporário/duplicado: _patch_"
+            },
+            {
+                "path": "app/Console/Kernel_patch_tudo_nivel_maximo.php",
+                "reason": "Nome sugere código temporário/duplicado: _patch_"
+            },
+            {
+                "path": "app/Modules/RH/Application/Financeiro/FolhaFinanceiroService.php.bak",
+                "reason": "Nome sugere código temporário/duplicado: .bak"
+            },
+            {
+                "path": "app/Services/RHDefaultPayrollEventService.php.bak",
+                "reason": "Nome sugere código temporário/duplicado: .bak"
+            },
+            {
+                "path": "app/Services/RHFolhaCompetenciaService.php.bak",
+                "reason": "Nome sugere código temporário/duplicado: .bak"
+            },
+            {
+                "path": "routes/ultimate_patch_routes.php",
+                "reason": "Nome sugere código temporário/duplicado: _patch_"
+            },
+            {
+                "path": "routes/web_patch_ia_aprendizado.php",
+                "reason": "Nome sugere código temporário/duplicado: _patch_"
+            },
+            {
+                "path": "routes/web_patch_ia_aprendizado_method.php",
+                "reason": "Nome sugere código temporário/duplicado: _patch_"
+            },
+            {
+                "path": "routes/web_patch_ia_aprovacao.php",
+                "reason": "Nome sugere código temporário/duplicado: _patch_"
+            },
+            {
+                "path": "routes/web_patch_ia_aprovacao_method.php",
+                "reason": "Nome sugere código temporário/duplicado: _patch_"
+            },
+            {
+                "path": "routes/web_patch_ia_autonoma.php",
+                "reason": "Nome sugere código temporário/duplicado: _patch_"
+            },
+            {
+                "path": "routes/web_patch_nivel_absurdo_maximo.php",
+                "reason": "Nome sugere código temporário/duplicado: _patch_"
+            },
+            {
+                "path": "routes/web_patch_nivel_maximo.php",
+                "reason": "Nome sugere código temporário/duplicado: _patch_"
+            },
+            {
+                "path": "routes/web_patch_preditivo_alertas.php",
+                "reason": "Nome sugere código temporário/duplicado: _patch_"
+            },
+            {
+                "path": "routes/web_patch_snippet.php",
+                "reason": "Nome sugere código temporário/duplicado: _patch_"
+            },
+            {
+                "path": "routes/web_patch_tudo_nivel_maximo.php",
+                "reason": "Nome sugere código temporário/duplicado: _patch_"
+            }
+        ]
+    },
+    "security_headers": {
+        "middleware_exists": true,
+        "kernel_registered": true,
+        "headers": {
+            "x_frame_options": "SAMEORIGIN",
+            "referrer_policy": "strict-origin-when-cross-origin",
+            "permissions_policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+            "csp_report_only_enabled": true,
+            "hsts_enabled": false
+        }
+    },
+    "artifacts": [
+        {
+            "path": "docs/operacao/governance_report.json",
+            "exists": true
+        },
+        {
+            "path": "docs/operacao/schema_drift_report.json",
+            "exists": false
+        },
+        {
+            "path": "docs/operacao/system_healthcheck.json",
+            "exists": false
+        },
+        {
+            "path": "docs/operacao/stock_governance_report.json",
+            "exists": false
+        },
+        {
+            "path": "docs/operacao/fiscal_operations_report.json",
+            "exists": false
+        }
+    ]
+}

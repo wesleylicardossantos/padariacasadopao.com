@@ -1,0 +1,235 @@
+{
+    "generated_at": "2026-04-23 11:33:24",
+    "routes": [
+        {
+            "route": "rh.dossie.show",
+            "exists": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "rh.permission:rh.dossie.visualizar"
+            ]
+        },
+        {
+            "route": "rh.dossie.documentos.store",
+            "exists": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "rh.permission:rh.dossie.documentos.gerenciar"
+            ]
+        },
+        {
+            "route": "rh.dossie.documentos.download",
+            "exists": true,
+            "middleware": [
+                "web",
+                "tenant.context",
+                "rh.permission:rh.dossie.visualizar"
+            ]
+        },
+        {
+            "route": "rh.portal_externo.documentos_rescisao",
+            "exists": true,
+            "middleware": [
+                "web",
+                "portalFuncionario",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "rh.portal_externo.documentos_rescisao.trct.pdf",
+            "exists": true,
+            "middleware": [
+                "web",
+                "portalFuncionario"
+            ]
+        },
+        {
+            "route": "rh.portal_externo.documentos_rescisao.tqrct.pdf",
+            "exists": true,
+            "middleware": [
+                "web",
+                "portalFuncionario"
+            ]
+        },
+        {
+            "route": "rh.portal_externo.documentos_rescisao.homologacao.pdf",
+            "exists": true,
+            "middleware": [
+                "web",
+                "portalFuncionario"
+            ]
+        },
+        {
+            "route": "rh.portal_funcionario.pdf",
+            "exists": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        }
+    ],
+    "tables": [
+        {
+            "table": "rh_dossies",
+            "exists": false,
+            "schema_error": "could not find driver (Connection: mysql, SQL: select * from information_schema.tables where table_schema = wesl4494_db_saas and table_name = rh_dossies and table_type = 'BASE TABLE')",
+            "columns": [
+                {
+                    "column": "empresa_id",
+                    "exists": false
+                },
+                {
+                    "column": "funcionario_id",
+                    "exists": false
+                },
+                {
+                    "column": "status",
+                    "exists": false
+                },
+                {
+                    "column": "ultima_atualizacao_em",
+                    "exists": false
+                }
+            ]
+        },
+        {
+            "table": "rh_dossie_eventos",
+            "exists": false,
+            "schema_error": "could not find driver (Connection: mysql, SQL: select * from information_schema.tables where table_schema = wesl4494_db_saas and table_name = rh_dossie_eventos and table_type = 'BASE TABLE')",
+            "columns": [
+                {
+                    "column": "empresa_id",
+                    "exists": false
+                },
+                {
+                    "column": "funcionario_id",
+                    "exists": false
+                },
+                {
+                    "column": "categoria",
+                    "exists": false
+                },
+                {
+                    "column": "titulo",
+                    "exists": false
+                },
+                {
+                    "column": "data_evento",
+                    "exists": false
+                },
+                {
+                    "column": "visibilidade_portal",
+                    "exists": false
+                }
+            ]
+        },
+        {
+            "table": "rh_documentos",
+            "exists": false,
+            "schema_error": "could not find driver (Connection: mysql, SQL: select * from information_schema.tables where table_schema = wesl4494_db_saas and table_name = rh_documentos and table_type = 'BASE TABLE')",
+            "columns": [
+                {
+                    "column": "empresa_id",
+                    "exists": false
+                },
+                {
+                    "column": "funcionario_id",
+                    "exists": false
+                },
+                {
+                    "column": "tipo",
+                    "exists": false
+                },
+                {
+                    "column": "categoria",
+                    "exists": false
+                },
+                {
+                    "column": "arquivo",
+                    "exists": false
+                },
+                {
+                    "column": "origem",
+                    "exists": false
+                },
+                {
+                    "column": "status",
+                    "exists": false
+                },
+                {
+                    "column": "hash_conteudo",
+                    "exists": false
+                }
+            ]
+        },
+        {
+            "table": "rh_rescisoes",
+            "exists": false,
+            "schema_error": "could not find driver (Connection: mysql, SQL: select * from information_schema.tables where table_schema = wesl4494_db_saas and table_name = rh_rescisoes and table_type = 'BASE TABLE')",
+            "columns": [
+                {
+                    "column": "empresa_id",
+                    "exists": false
+                },
+                {
+                    "column": "funcionario_id",
+                    "exists": false
+                },
+                {
+                    "column": "data_rescisao",
+                    "exists": false
+                },
+                {
+                    "column": "total_liquido",
+                    "exists": false
+                },
+                {
+                    "column": "status",
+                    "exists": false
+                }
+            ]
+        }
+    ],
+    "views": [
+        {
+            "view": "resources/views/rh/dossie/show.blade.php",
+            "exists": true
+        },
+        {
+            "view": "resources/views/rh/holerite/pdf.blade.php",
+            "exists": true
+        },
+        {
+            "view": "resources/views/rh/portal_funcionario/documentos_rescisao_externo.blade.php",
+            "exists": true
+        },
+        {
+            "view": "resources/views/rh/documentos/pdf/documento_rescisao_pdf.blade.php",
+            "exists": true
+        },
+        {
+            "view": "resources/views/rh/documentos/pdf/trct_juridico_pdf.blade.php",
+            "exists": true
+        }
+    ],
+    "controllers": [
+        {
+            "controller": "App\\Http\\Controllers\\RHDossieController",
+            "exists": true
+        },
+        {
+            "controller": "App\\Http\\Controllers\\RHPortalFuncionarioController",
+            "exists": true
+        },
+        {
+            "controller": "App\\Http\\Controllers\\RHDocumentoGeradoController",
+            "exists": true
+        }
+    ]
+}

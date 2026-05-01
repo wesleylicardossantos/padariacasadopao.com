@@ -1,0 +1,4 @@
+Implementada classificação na lista de produtos com opções: Descrição A-Z, Descrição Z-A, Mais recentes e Mais antigos.
+Arquivos alterados:
+- app/Http/Controllers/ProductController.php
+- resources/views/produtos/index.blade.php

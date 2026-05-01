@@ -1,0 +1,3 @@
+-- Ajuste fino de layout TRCT/TQRCT/Homologação para PDF
+-- Esta etapa não exige alteração estrutural no banco.
+-- Nenhuma migration adicional é necessária.

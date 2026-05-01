@@ -1,0 +1,1 @@
+PDV otimizado com remoção de N+1 e queries simplificadas.

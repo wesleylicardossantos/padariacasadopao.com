@@ -1,0 +1,124 @@
+{
+    "generated_at": "2026-04-10 20:27:56",
+    "tenant_context_alias_registered": true,
+    "routes": [
+        {
+            "route": "rh.portal_funcionario.index",
+            "exists": true,
+            "tenant_context": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "rh.portal_funcionario.pdf",
+            "exists": true,
+            "tenant_context": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "rh.portal_externo.enviar_acesso",
+            "exists": true,
+            "tenant_context": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "rh.portal_externo.configurar",
+            "exists": true,
+            "tenant_context": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "rh.portal_perfis.index",
+            "exists": true,
+            "tenant_context": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "rh.portal_perfis.store",
+            "exists": true,
+            "tenant_context": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "rh.portal_perfis.update",
+            "exists": true,
+            "tenant_context": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "rh.portal_perfis.destroy",
+            "exists": true,
+            "tenant_context": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        }
+    ],
+    "controllers": [
+        {
+            "controller": "App\\Http\\Controllers\\RHPortalAcessoController",
+            "uses_tenant_trait": true
+        },
+        {
+            "controller": "App\\Http\\Controllers\\RHPortalFuncionarioController",
+            "uses_tenant_trait": true
+        },
+        {
+            "controller": "App\\Http\\Controllers\\RHPortalPerfilController",
+            "uses_tenant_trait": true
+        }
+    ]
+}

@@ -1,0 +1,241 @@
+{
+    "generated_at": "2026-04-10 20:42:32",
+    "tenant_context_alias_registered": true,
+    "routes": [
+        {
+            "route": "financeiro.index",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "financeiro.list",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "nfse.index",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "nfse.imprimir",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "boletos.index",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "boletos.print",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "boletos.store-issue",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "remessa-boletos.index",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "remessa.sem-remessa",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "remessa-boletos.download",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "contigencia.index",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "contigencia.desactive",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context"
+            ]
+        },
+        {
+            "route": "compraFiscal.index",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context",
+                {}
+            ]
+        },
+        {
+            "route": "compraFiscal.store",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context",
+                {}
+            ]
+        },
+        {
+            "route": "compraFiscal.import",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context",
+                {}
+            ]
+        }
+    ],
+    "controllers": [
+        {
+            "controller": "App\\Http\\Controllers\\FinanceiroController",
+            "uses_tenant_trait": true
+        },
+        {
+            "controller": "App\\Http\\Controllers\\NfseController",
+            "uses_tenant_trait": true
+        },
+        {
+            "controller": "App\\Http\\Controllers\\ContigenciaController",
+            "uses_tenant_trait": true
+        },
+        {
+            "controller": "App\\Http\\Controllers\\BoletoController",
+            "uses_tenant_trait": true
+        },
+        {
+            "controller": "App\\Http\\Controllers\\RemessaBoletoController",
+            "uses_tenant_trait": true
+        }
+    ]
+}

@@ -1,0 +1,39 @@
+{
+    "generated_at": "2026-04-23T14:12:13-03:00",
+    "routes": [
+        {
+            "route": "enterprise.saas.executive",
+            "exists": true
+        },
+        {
+            "route": "rh.acl.index",
+            "exists": true
+        },
+        {
+            "route": "rh.acl.assign",
+            "exists": true
+        },
+        {
+            "route": "rh.portal_externo.dashboard",
+            "exists": true
+        },
+        {
+            "route": "rh.portal_externo.dossie",
+            "exists": true
+        },
+        {
+            "route": "rh.portal_externo.documentos_rescisao",
+            "exists": true
+        }
+    ],
+    "tables": {
+        "rh_acl_papeis": false,
+        "rh_portal_perfis": false,
+        "rh_admin_action_audits": false
+    },
+    "views": {
+        "enterprise/saas/executive": true,
+        "rh/acl/index": true,
+        "rh/portal_funcionario/dossie_externo": true
+    }
+}

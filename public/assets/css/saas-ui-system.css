@@ -1,0 +1,40 @@
+:root{--erp-saas-bg:#f4f6f9;--erp-saas-card:#fff;--erp-saas-line:#e5e7eb;--erp-saas-text:#111827;--erp-saas-muted:#6b7280;--erp-saas-primary:#2563eb;--erp-saas-success:#059669;--erp-saas-danger:#dc2626;--erp-saas-warning-bg:#fff7ed;--erp-saas-warning-line:#fed7aa}.erp-saas-page{background:var(--erp-saas-bg);margin:-1.5rem -1.5rem 0;padding:1.5rem;min-height:calc(100vh - 90px)}.erp-saas-header{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1.25rem}.erp-saas-title{font-size:1.65rem;font-weight:600;color:var(--erp-saas-text);margin:0 0 .2rem}.erp-saas-subtitle{color:var(--erp-saas-muted);margin:0}.erp-saas-card,.erp-saas-kpi{background:var(--erp-saas-card);border:1px solid var(--erp-saas-line);border-radius:.75rem;box-shadow:0 .25rem 1rem rgba(17,24,39,.04);height:100%}.erp-saas-card .card-body,.erp-saas-kpi .card-body{padding:1rem}.erp-saas-label{font-size:.75rem;font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:var(--erp-saas-muted);margin-bottom:.35rem}.erp-saas-value{font-size:1.45rem;line-height:1.15;font-weight:700;color:var(--erp-saas-text)}.erp-saas-note{font-size:.8rem;color:var(--erp-saas-muted);margin-top:.25rem}.erp-saas-section-title{font-size:1rem;font-weight:600;color:var(--erp-saas-text);margin-bottom:.9rem}.erp-saas-alert{background:var(--erp-saas-warning-bg);border:1px solid var(--erp-saas-warning-line);color:#92400e;border-radius:.75rem;box-shadow:0 .25rem 1rem rgba(17,24,39,.04)}.erp-saas-table thead th,.erp-saas-table .table thead th{background:#f8fafc;color:#475569;font-size:.75rem;text-transform:uppercase;letter-spacing:.03em;white-space:nowrap}.erp-saas-table td,.erp-saas-table .table td{vertical-align:middle}.erp-saas-status{display:inline-flex;align-items:center;padding:.25rem .55rem;border-radius:999px;font-size:.75rem;font-weight:700}.erp-saas-status-ok{background:#dcfce7;color:#166534}.erp-saas-status-warn{background:#fef3c7;color:#92400e}.erp-saas-status-danger{background:#fee2e2;color:#991b1b}@media(max-width:768px){.erp-saas-page{margin:-1rem -1rem 0;padding:1rem}.erp-saas-title{font-size:1.35rem}.erp-saas-value{font-size:1.25rem}}
+
+/* =========================================================
+   Listas padrão SaaS - cabeçalho fixo de colunas
+   Mantém os títulos das colunas visíveis durante a rolagem
+   sem alterar controllers, consultas ou estrutura do banco.
+   ========================================================= */
+.table-responsive table thead th,
+.table-responsive table thead td,
+.datatable-table .datatable-head .datatable-cell,
+.erp-saas-table thead th,
+.erp-saas-table .table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #f8fafc;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .08);
+}
+
+.table-responsive table thead th,
+.table-responsive table thead td {
+    vertical-align: middle;
+}
+
+.table-responsive {
+    position: relative;
+}
+
+.table-responsive thead th a,
+.table-responsive thead td a {
+    position: relative;
+    z-index: 11;
+}
+
+body.dark-theme .table-responsive table thead th,
+body.dark-theme .table-responsive table thead td,
+body.dark-theme .datatable-table .datatable-head .datatable-cell {
+    background: #1f2937;
+    color: #f8fafc;
+}

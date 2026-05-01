@@ -1,0 +1,253 @@
+{
+    "generated_at": "2026-04-10 21:26:17",
+    "tenant_context_alias_registered": true,
+    "routes": [
+        {
+            "route": "dre.index",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context",
+                {}
+            ]
+        },
+        {
+            "route": "dre.list",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context",
+                {}
+            ]
+        },
+        {
+            "route": "dre.imprimir",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context",
+                {}
+            ]
+        },
+        {
+            "route": "relatorios.index",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context",
+                {}
+            ]
+        },
+        {
+            "route": "relatorios.soma-vendas",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context",
+                {}
+            ]
+        },
+        {
+            "route": "relatorios.vendaProdutos",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context",
+                {}
+            ]
+        },
+        {
+            "route": "produtos.index",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context",
+                {}
+            ]
+        },
+        {
+            "route": "produtos.movimentacao",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context",
+                {}
+            ]
+        },
+        {
+            "route": "produtos.duplicar",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context",
+                {}
+            ]
+        },
+        {
+            "route": "vendas.index",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context",
+                {}
+            ]
+        },
+        {
+            "route": "vendas.clone",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context",
+                {}
+            ]
+        },
+        {
+            "route": "vendas.print",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context",
+                {}
+            ]
+        },
+        {
+            "route": "pedidos.index",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context",
+                {}
+            ]
+        },
+        {
+            "route": "pedidos.verMesa",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context",
+                {}
+            ]
+        },
+        {
+            "route": "pedidos.finalizar",
+            "exists": true,
+            "tenant_context": true,
+            "verifica_empresa": true,
+            "middleware": [
+                "web",
+                "verificaEmpresa",
+                "validaAcesso",
+                "verificaContratoAssinado",
+                "limiteArmazenamento",
+                "tenant.context",
+                {}
+            ]
+        }
+    ],
+    "controllers": [
+        {
+            "controller": "App\\Http\\Controllers\\RelatorioController",
+            "uses_tenant_trait": true
+        },
+        {
+            "controller": "App\\Http\\Controllers\\DreController",
+            "uses_tenant_trait": true
+        },
+        {
+            "controller": "App\\Http\\Controllers\\ProductController",
+            "uses_tenant_trait": true
+        },
+        {
+            "controller": "App\\Http\\Controllers\\VendaController",
+            "uses_tenant_trait": true
+        },
+        {
+            "controller": "App\\Http\\Controllers\\PedidoController",
+            "uses_tenant_trait": true
+        }
+    ]
+}

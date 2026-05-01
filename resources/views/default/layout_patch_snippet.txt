@@ -1,0 +1,15 @@
+
+<!-- PATCH: proteção de variáveis globais -->
+
+<html lang="pt-BR"
+class="{{ $theme->tema ?? '' }} {{ $theme->cabecalho ?? '' }}">
+
+@if(($colorDefault ?? '') != '')
+
+<style type="text/css">
+:root {
+--color-default: {{ $colorDefault ?? '' }};
+}
+</style>
+
+@endif
