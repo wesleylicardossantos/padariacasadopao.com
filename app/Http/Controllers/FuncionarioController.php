@@ -14,7 +14,7 @@ use App\Modules\RH\Application\DTOs\CreateEmployeeData;
 use App\Modules\RH\Application\DTOs\UpdateEmployeeData;
 use App\Modules\RH\Application\DTOs\ChangeEmployeeStatusData;
 use App\Modules\RH\Support\Enums\EmployeeStatus;
-use App\Modules\RH\Http\Controllers\Concerns\InteractsWithRH;
+use App\Modules\RH\Support\Concerns\InteractsWithRH;
 use App\Rules\ValidaDocumento;
 use App\Services\RHFolhaLockService;
 use App\Models\RHPortalFuncionario;

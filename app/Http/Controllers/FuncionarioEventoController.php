@@ -6,7 +6,7 @@ use App\Models\EventoSalario;
 use App\Models\Funcionario;
 use App\Models\FuncionarioEvento;
 use App\Modules\RH\Application\FuncionarioEvento\FuncionarioEventoService;
-use App\Modules\RH\Http\Controllers\Concerns\InteractsWithRH;
+use App\Modules\RH\Support\Concerns\InteractsWithRH;
 use App\Services\RHFolhaLockService;
 use Illuminate\Http\Request;
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Funcionario;
 use App\Models\RHFalta;
-use App\Modules\RH\Http\Controllers\Concerns\InteractsWithRH;
+use App\Modules\RH\Support\Concerns\InteractsWithRH;
 use App\Services\RHFolhaLockService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;

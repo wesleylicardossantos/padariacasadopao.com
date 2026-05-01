@@ -10,7 +10,7 @@ use App\Models\RHHoleriteEnvio;
 use App\Models\RHHoleriteEnvioLote;
 use App\Modules\RH\Application\ApuracaoMensal\ApuracaoMensalService;
 use App\Modules\RH\Application\Financeiro\FolhaFinanceiroService;
-use App\Modules\RH\Http\Controllers\Concerns\InteractsWithRH;
+use App\Modules\RH\Support\Concerns\InteractsWithRH;
 use App\Services\RHHoleritePdfService;
 use Illuminate\Http\Request;
 use App\Exports\RHHoleriteEnviosExport;

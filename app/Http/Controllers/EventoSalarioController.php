@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ApuracaoSalarioEvento;
 use App\Models\EventoSalario;
 use App\Models\FuncionarioEvento;
-use App\Modules\RH\Http\Controllers\Concerns\InteractsWithRH;
+use App\Modules\RH\Support\Concerns\InteractsWithRH;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
